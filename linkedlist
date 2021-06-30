@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct employee {
+  int empno;
+  char empname;
+  int age;
+  float salary;
+  int i;
+};
+
+int main()
+ {
+  struct employee *ptr;
+  int empno,i,empname,age,salary;
+  printf("Enter the employee number: ");
+  scanf("%d", &empno);
+  ptr = (struct employee *)malloc(empno * sizeof(struct employee));
+  for (i = 0; i < empno; ++i) 
+  {
+    printf("Enter employee name:\n");
+    scanf("%s", (ptr + i)->empname);
+    printf("Enter age");
+    scanf("%d",&(ptr + i)->age);
+    printf("Enter salary");
+    scanf("%f",&(ptr + i)->salary);
+  }
+
+  printf("Displaying Information:\n");
+  for (i = 0; i < empno; ++i)
+   {
+    printf("%c\t%d\t %d\n", (ptr + i)->empname, (ptr + i)->age, (ptr + i)->empno, (ptr+i)->salary);
+  }
+
+  free(ptr);
+
+  return 0;
+}
